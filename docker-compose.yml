@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    # user: 1000:1000 # should be owner of volumes
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    restart: unless-stopped
+    environment:
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+volumes:
+  data:
+  letsencrypt:
