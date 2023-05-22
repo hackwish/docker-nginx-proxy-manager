@@ -8,9 +8,9 @@ services:
       dockerfile: Dockerfile
      #user: 1000:1000 # should be owner of volumes
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - '80:9443'
+      - '81:9443'
+      - '443:9443'
     dns:
       - 8.8.8.8
       - 1.1.1.1
